@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2018 at 04:20 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Sep 09, 2018 at 02:50 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,7 +42,8 @@ CREATE TABLE `checkins` (
 
 INSERT INTO `checkins` (`id`, `id_barang`, `qty`, `created_at`, `updated_at`) VALUES
 (1, 3, 3, '2018-08-31 10:08:12', '2018-08-31 10:08:12'),
-(2, 3, 3, '2018-08-31 10:10:40', '2018-08-31 10:10:40');
+(2, 3, 3, '2018-08-31 10:10:40', '2018-08-31 10:10:40'),
+(3, 6, 5, '2018-09-09 12:13:13', '2018-09-09 12:13:13');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ INSERT INTO `items` (`id`, `kode_barang`, `nama`, `stock`, `lokasi`, `created_at
 (3, '12W-1206', 'pcb', 6, 'rak biru', '2018-08-20 02:59:33', '2018-08-31 10:10:40'),
 (4, '2,4W-1206', 'resistor', 212, 'rak biru', '2018-08-20 10:05:19', '2018-08-24 08:47:41'),
 (5, '1K-1206', 'resitor', 4, 'rak hijau', '2018-08-24 08:25:23', '2018-08-24 08:25:23'),
-(6, '6,81K-120', 'resitor', 2, 'rak hijau', '2018-08-24 08:25:51', '2018-08-24 08:47:35'),
+(6, '6,81K-120', 'resitor', 7, 'rak hijau', '2018-08-24 08:25:51', '2018-09-09 12:13:13'),
 (7, '182K-1206', 'resistor', 70, 'rak hijau', '2018-08-24 08:26:26', '2018-08-24 08:26:26'),
 (8, '9,1K-1206', 'resistor', 60, 'rak hijau', '2018-08-24 08:26:53', '2018-08-24 08:26:53'),
 (9, '33,2K-1206', 'resistor', 50, 'rak hijau', '2018-08-24 08:27:19', '2018-08-24 08:27:19'),
@@ -110,7 +111,8 @@ INSERT INTO `items` (`id`, `kode_barang`, `nama`, `stock`, `lokasi`, `created_at
 (21, '1N47', 'resistor', 90, 'rak hijau', '2018-08-24 08:33:23', '2018-08-24 08:33:23'),
 (22, '226K-1206', 'resistor', 54, 'rak hijau', '2018-08-24 08:33:48', '2018-08-24 08:33:48'),
 (23, '10-1206', 'resistor', 78, 'rak hijau', '2018-08-24 08:34:13', '2018-08-24 08:34:13'),
-(24, '27K-1206', 'resistor', 69, 'rak hijau', '2018-08-24 08:34:47', '2018-08-24 08:34:47');
+(24, '27K-1206', 'resistor', 69, 'rak hijau', '2018-08-24 08:34:47', '2018-08-24 08:34:47'),
+(25, '1590K', 'resistor', 2, 'rak biru', '2018-09-05 08:51:11', '2018-09-05 08:51:11');
 
 -- --------------------------------------------------------
 
@@ -181,7 +183,12 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\User', 1),
-(2, 'App\\User', 2),
+(2, 'App\\User', 14),
+(2, 'App\\User', 16),
+(2, 'App\\User', 17),
+(2, 'App\\User', 18),
+(2, 'App\\User', 19),
+(3, 'App\\User', 2),
 (3, 'App\\User', 3);
 
 -- --------------------------------------------------------
@@ -195,6 +202,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('ramdan@develop.com', '$2y$10$EHMtICtKClUNgo71hfUGnuw4YsH5Xuzxy4OlMl7958WGqH1WaunS.', '2018-09-05 15:44:20');
 
 -- --------------------------------------------------------
 
@@ -290,9 +304,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2y$10$vUTE5MBLzfQwa328d2SiWO6x64F12k0FFu5hr3dx33J8ze35Iddfe', 'PHgtrNecoV8rYUwYhv5kJG7jU8L2T57rCTXiRfm4uN3JQOAQAaXhVCNhjFqi', '2018-08-20 00:29:28', '2018-08-20 00:29:28'),
-(2, 'ramdan', 'ramdan@develop.com', '$2y$10$cD6GfjLQ8S80m7KtRuoB5OtCRU7Rq6ctQ0LkSAVp6S4cfkV0.PBRu', 'zCFoPjCaYAqe6LLPgk03na6KeNwTU5H0IUXJyomL3LkFITiN74L3K7oxvdPu', '2018-08-24 13:12:49', '2018-08-24 13:12:49'),
-(3, 'superadmin@gmail.com', 'superadmin@gmail.com', '$2y$10$X5iD/NQ.EOZHFo2ANxb9COqZNXCSRdOWveLgSUio9LnjjJymE9bzC', 'x6oznfdePjM3mY3JGafGfeJ8AEUk8pJKxBcx18oyeaeO1KkFVQQynG6Sg5sG', '2018-08-25 14:36:05', '2018-08-25 14:36:05');
+(1, 'admin125', 'admin@gmail.com', '$2y$10$Dih6c5J4MCnfjQK79fyeiu20kzuBUtgR4j9jRyl9URQRlToKFtwlG', 'a7HysezEHJZu1JrjgJV6fj9Gbvsc6VRR32rZMs5YeSqBCiSiukyXu46AXFiC', '2018-08-20 00:29:28', '2018-09-09 07:08:52'),
+(2, 'ramdan', 'ramdan@develop.com', '$2y$10$cD6GfjLQ8S80m7KtRuoB5OtCRU7Rq6ctQ0LkSAVp6S4cfkV0.PBRu', 'W5zj4MHrooHxyi0E6fhYrNllxoebjASBT1iZANZXJ24NR5kb5doUOtIhzUKo', '2018-08-24 13:12:49', '2018-08-24 13:12:49'),
+(3, 'Super Admin', 'superadmin@gmail.com', '$2y$10$Dih6c5J4MCnfjQK79fyeiu20kzuBUtgR4j9jRyl9URQRlToKFtwlG', '0JdzAnc3OgbLWIqrNEzawdaqjZieplvcQ71H03Rx1gjQRScCmBgNHVxRgwBx', '2018-08-25 14:36:05', '2018-09-09 07:10:06'),
+(14, '1234555', '555@mail.com', '$2y$10$J3LolDEOHyKBm4aAkjBvCejx6JOp2CLMx2NaJo.9YBZJVRUDpOAmy', '6zjIcXgnMc9pSNYIQAsOFtfz7DiH3o4cCWlCh6zzWEyzQOZrt4ZOlGeycz8r', '2018-09-09 09:26:29', '2018-09-09 09:26:29'),
+(16, 'denda', 'denda@gmail.com', '$2y$10$Sff7UzzYy5TvXMGrefj/IeLUxmRHJcoG2Db/LgtamOo8bTq8EEC22', 'D8VXxBRUJr72HSdvqjcnor58KLuHIaGARuyyY9a2ixvM4T8X7Hxbv0c5RcML', '2018-09-09 11:24:49', '2018-09-09 11:24:49'),
+(17, 'denda', 'ramdan@ymail.com', '$2y$10$ZZQXyupQ9gaLFGG0dEBZWecg7Onng3KPDUf8ToCA11Dt53h8EPcnG', 'op1gi9Pg798OiDJoHPV9Yde36z68h36mIOoNyHuxymAUV83xanvGD3W9KJ0E', '2018-09-09 11:30:16', '2018-09-09 11:30:16'),
+(18, 'asdasd', 'asdasd@asd.com', '$2y$10$LMnV/868/APup3ChwgldT.gmkoINviFs6xgyo3zeu12C46xz.uxKy', '6PyHGbn8fxui4ro5a2DaijPdUH4Avbk4ZvfxoOdcrz2CpChfTMFEyIvl2yuD', '2018-09-09 11:46:13', '2018-09-09 11:46:13'),
+(19, 'lois', 'lois@gmail.com', '$2y$10$ke/2pcxuGvynAHtPme66KeGdBxTghvhCfNZyUjY6xhpJm6dvcdkki', '61bsDGVWvDRPPvnCpiagrGZb5YUSJP2SpQUnZeYLI6R77cjdzCBRAIMuxRYE', '2018-09-09 12:12:37', '2018-09-09 12:12:37');
 
 --
 -- Indexes for dumped tables
@@ -379,7 +398,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `checkins`
 --
 ALTER TABLE `checkins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `checkouts`
@@ -391,7 +410,7 @@ ALTER TABLE `checkouts`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -415,7 +434,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
