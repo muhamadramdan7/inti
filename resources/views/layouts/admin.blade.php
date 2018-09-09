@@ -52,30 +52,43 @@
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>PT.</b>&nbsp;INTI</span>
     </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+         
+         
 
-      
+
+
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+                <img src="" alt="" />
+                {{auth()->user()->name}}
+                <span class="caret"></span>
+            </a>
+                <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                  <li><a href="{{URL::TO('/admin/setting')}}"><i class="fa fa-cog"></i>  Settings</a></li>
+                  <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+          </li>
+        </ul>
+      </div>
     </nav>
+
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{URL::asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
+      
       <!-- search form -->
       <!--<form action="#" method="get" class="sidebar-form">
         <div class="input-group">

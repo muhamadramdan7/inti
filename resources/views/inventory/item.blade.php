@@ -1,6 +1,13 @@
 @extends('layouts.admin',['$notif'])
 
 @section('content')
+<section class="content-header">
+      <h1>
+        Data
+        <small>Barang</small>
+      </h1>
+      
+    </section>
    <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -11,9 +18,16 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   Input Barang
 </button>
+
+<a href="{{route('item-export')}}" class="btn btn-default">Export</a>
+
+
+
+
 @else
 
 @endrole
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -58,6 +72,7 @@
 
 
             </div>
+
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">

@@ -3,8 +3,8 @@
 @section('content')
 <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Check In
+        <small>Barang</small>
       </h1>
      
     </section>

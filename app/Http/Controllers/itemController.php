@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\item;
+use Excel;
 
 class itemController extends Controller
 {
@@ -49,4 +50,14 @@ class itemController extends Controller
         return back();
         
     }
+    public function itemExport()
+    {
+        $data = item::select('kode_barang','nama','stock','lokasi','created_at')->get();
+        return Excel::create('data_barang', function($excel) use($data){
+            $excel->sheet('mysheet', function($sheet) use ($data){
+                $sheet->fromArray($data);
+            });
+        })->download('xlsx');
+    }
+    
 }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\item;
+use App\checkin;
+use App\checkout;
+use App\user;
 class adminController extends Controller
 {
       public function __construct()
@@ -15,8 +18,14 @@ class adminController extends Controller
         /*if (!auth()->user()->hasRole('admin')){
             abort(404);
         }*/
+        
+        $data = item::count();
+        $checkin = checkin::count();
+        $checkout = checkout::count();
+        $user = user::count();
         $notif = item::where('stock','<=','5')->count();
-        return view('inventory.home',compact('notif'));
+        return view('inventory.home',compact('notif','data','checkin','checkout','user'));
+
     }
 
     /**
